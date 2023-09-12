@@ -2,9 +2,9 @@
 
 ## Descrição do Projeto:
 
-O projeto "Pé d'Água" adota uma abordagem integrada na obtenção e análise de dados de chuva por meio de APIs, visando monitorar padrões de precipitação em São Paulo. A implementação abrange a coleta de informações provenientes dessas APIs e sua integração a um banco de dados centralizado, permitindo o registro e a análise de padrões de chuva em diversas localizações da cidade. A avaliação dos dados se baseia na consideração da quantidade de chuva em milímetros e sua duração, o que contribui para a avaliação do potencial de alagamento.
+O projeto "Pé d'Água" adota uma abordagem integrada na obtenção e análise de dados de chuva, visando monitorar padrões de precipitação em São Paulo. A implementação abrange a coleta de informações provenientes do sensor Guarda_Chuva e sua integração a um banco de dados centralizado, permitindo o registro e a análise de padrões de chuva em diversas localizações da cidade. A avaliação dos dados se baseia na consideração da quantidade de chuva em milímetros e sua duração, o que contribui para a avaliação do potencial de alagamento.
 
-Além disso, o projeto incorpora a utilização de um sensor de enchentes localizado em pontos estratégicos da cidade. Esse sensor, inspirado por um pluviômetro automatizado, opera em conjunto com a conectividade WiFi para transmitir informações em tempo real para o banco de dados central. Dentro desse repositório, as informações são submetidas a um processo de tratamento e análise, envolvendo o cruzamento de dados para a identificação de áreas de risco de alagamento.
+Além disso, o projeto incorpora a utilização do sensor de enchentes localizado em pontos estratégicos da cidade. Esse sensor, inspirado por um pluviômetro automatizado, opera em conjunto com a conectividade WiFi para transmitir informações em tempo real para o banco de dados central. Dentro desse repositório, as informações são submetidas a um processo de tratamento e análise, envolvendo o cruzamento de dados para a identificação de áreas de risco de alagamento.
 
 Para proporcionar uma interface acessível aos usuários, o projeto oferece a visualização dos dados coletados por meio de um mapa interativo. Além disso, a plataforma emprega notificações via SMS para comunicar informações cruciais aos usuários. A participação na utilização do serviço é viabilizada por meio do cadastramento dos usuários, garantindo a disponibilidade em tempo real das funcionalidades oferecidas. Adicionalmente, a interação dos usuários é incentivada por meio da possibilidade de enviar relatórios pessoais, contribuindo para a identificação de novas localizações estratégicas para a instalação de sensores de enchentes.
 
@@ -12,15 +12,17 @@ Para proporcionar uma interface acessível aos usuários, o projeto oferece a vi
 
 ### Dispositivos IoT:
 
-- **Sistema de Sensor de Enchentes:** Um sistema de pluviômetro automatizado que envia informações para o banco de dados por meio de uma conexão WiFi.
+- **Pluviômetro Automatizado:**  Ele consiste em um funil ou uma superfície coletora que direciona a água da chuva para um Pluviômetro de Báscula projetado especificamente para medir a quantidade de chuva que cai em uma área utilizando, e um imã que junto de um reed switch para captar a oscilação do pluviômetro assim calculando sua frequência relativa a chuva.
+
+![Pluviômetro de Báscula]([https://exemplo.com/seu_gif.gif](https://www.c2o.pro.br/proj/pluviometro/figuras/animacao_pluviometro_bascula.gif))
 
 ### Backend:
 
-- **Integração:** Coleta dados da API de chuva, dos sensores IoT e dos reports de usuário e realiza a análise dos dados para determinar o risco de enchentes.
+- **Integração:** Coleta dados do sensor IoT, e dos reports de usuário e realiza a análise dos dados para determinar o risco de enchentes.
 
 - **Alertas:** Gera e envia alertas aos usuários cadastrados em caso de risco iminente de enchente via SMS.
 
-- **Dados:** Armazena dados históricos de chuva e informações de sensores IoT para análises futuras e dados do usuário.
+- **Dados:** Armazena dados históricos de chuva e informações de sensores IoT para análises futuras e dados do usuário utilizando IA e Machine learning.
 
 ### Frontend:
 
