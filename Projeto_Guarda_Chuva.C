@@ -27,7 +27,7 @@ void init_wifi() {
 }
 
 float Chuva = 0; // Variável de chuva
-float Umidade = 0; // Variável de umidade
+float umidade = 0; // Variável de umidade
 
 void loop() {
   char anyData[30];
@@ -55,7 +55,7 @@ void loop() {
 
   // Formatar e enviar dados de umidade
   strcpy(umidadeData, "{\n\t\"variable\": \"Umidade\",\n\t\"value\": ");
-  dtostrf(Umidade, 6, 2, anyData);
+  dtostrf(umidade, 6, 2, anyData);
   strncat(umidadeData, anyData, 100);
   strcpy(anyData1, ",\n\t\"unit\": \"%\"\n\t}\n");
   strncat(umidadeData, anyData1, 100);
@@ -73,7 +73,7 @@ void loop() {
   Chuva += 10;
 
   // Incrementar o valor da umidade (simulação)
-  Umidade += 5;
+  umidade += 5;
 
   // Delay para enviar os dados periodicamente
   delay(5000);
