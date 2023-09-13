@@ -7,6 +7,7 @@ char pass[] = "Felipe100603";
 char serverAddress[] = "https://api.tago.io/data";  // TagoIO address
 char contentHeader[] = "application/json";
 char tokenHeader[]   = "b6649bfb-bca8-4ee5-8cf6-5b8f021f4621"; // TagoIO Token
+HTTPClient client; // Iniciar uma nova instância do cliente HTTP
 
 void setup() {
   // put your setup code here, to run once:
@@ -42,7 +43,6 @@ void loop() {
   strcpy(anyData1, ",\n\t\"unit\": \"mm\"\n\t}\n");
   strncat (chuvaData, anyData1, 100);
   Serial.println(chuvaData);
-  HTTPClient client; // Iniciar uma nova instância do cliente HTTP
   client.begin(serverAddress);
   client.addHeader("Content-Type", contentHeader);
   client.addHeader("Device-Token", tokenHeader);
