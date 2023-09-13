@@ -1,4 +1,4 @@
-# Projeto "Pé d'Água" - Prevenção e Alerta de Alagamentos em São Paulo
+# Projeto Pé d'Água - Prevenção e Alerta de Alagamentos em São Paulo
 
 ## Descrição do Projeto:
 
