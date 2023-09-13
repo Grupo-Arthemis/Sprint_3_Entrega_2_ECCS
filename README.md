@@ -14,8 +14,6 @@ Para proporcionar uma interface acessível aos usuários, o projeto oferece a vi
 
 - **Pluviômetro Automatizado:**  Ele consiste em um funil ou uma superfície coletora que direciona a água da chuva para um Pluviômetro de Báscula projetado especificamente para medir a quantidade de chuva que cai em uma área utilizando, e um imã que junto de um reed switch para captar a oscilação do pluviômetro assim calculando sua frequência relativa a chuva.
 
-![Pluviômetro de Báscula]([https://exemplo.com/seu_gif.gif](https://www.c2o.pro.br/proj/pluviometro/figuras/animacao_pluviometro_bascula.gif))
-
 ### Backend:
 
 - **Integração:** Coleta dados do sensor IoT, e dos reports de usuário e realiza a análise dos dados para determinar o risco de enchentes.
@@ -32,15 +30,15 @@ Para proporcionar uma interface acessível aos usuários, o projeto oferece a vi
 
 ### Dispositivos IoT:
 
-- **Conexão de Dados:** Internet e conectividade para transmitir os dados coletados para o backend.
+- **Conexão de Dados:** Internet e conectividade via chip para transmitir os dados coletados para o backend.
 
-- **Sistema de Sensor de Enchentes:** Pluviômetro, dispensador de água e localização disponível.
+- **Sistema de Sensor de Enchentes:** Pluviômetro de Báscula, localização disponível e Reed Switch .
 
 ### Backend:
 
 - **Servidores:** Para hospedar os microsserviços de integração, alertas e dados.
 
-- **Framework de Desenvolvimento:** Python ou outra linguagem adequada para desenvolver os microsserviços.
+- **Framework de Desenvolvimento:** Em uma linguagem adequada para desenvolver os microsserviços.
 
 - **Banco de Dados:** Armazenamento dos dados históricos de chuva e informações dos sensores IoT.
 
