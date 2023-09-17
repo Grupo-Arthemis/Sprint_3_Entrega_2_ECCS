@@ -1,3 +1,5 @@
+![Logo (1)](https://github.com/Grupo-Arthemis/Sprint_3_Entrega_2_ECCS/assets/84590776/53732870-e1d1-4142-92f1-b8d91198a28c)
+
 # Projeto Pé d'Água - Prevenção e Alerta de Alagamentos em São Paulo
 
 ## Descrição do Projeto:
