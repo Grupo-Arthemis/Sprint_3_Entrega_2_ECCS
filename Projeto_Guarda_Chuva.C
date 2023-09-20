@@ -9,6 +9,8 @@ char contentHeader[] = "application/json";
 char tokenHeader[]   = "b6649bfb-bca8-4ee5-8cf6-5b8f021f4621"; // TagoIO Token
 HTTPClient client; // Iniciar uma nova instância do cliente HTTP
 
+const char deviceID[] = "01"; //ID do dispositivo
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -28,12 +30,14 @@ void init_wifi() {
 
 float Chuva = 0; // Variável de chuva
 float umidade = 0; // Variável de umidade
+float temperatura = 0; // Variável de umidade
 
 void loop() {
   char anyData[30];
-  char chuvaData[300];
   char anyData1[30];
+  char chuvaData[300];
   char umidadeData[300];
+  char tempData[300];
   int statusCode = 0;
 
   // Formatar e enviar dados de chuva
@@ -53,6 +57,24 @@ void loop() {
   Serial.println("End of POST to TagoIO");
   Serial.println();
 
+  // Formatar e enviar dados de temperatura
+  strcpy(tempData, "{\n\t\"variable\": \"Temperatura\",\n\t\"value\": ");
+  dtostrf(temperatura, 6, 2, anyData);
+  strncat(tempData, anyData, 100);
+  strcpy(anyData1, ",\n\t\"unit\": \"C\"\n\t}\n");
+  strncat (tempData, anyData1, 100);
+  Serial.println(tempData);
+  client.begin(serverAddress);
+  client.addHeader("Content-Type", contentHeader);
+  client.addHeader("Device-Token", tokenHeader);
+  statusCode = client.POST(tempData);
+  delay (2000);
+  Serial.print("Status code (Temperatura): ");
+  Serial.println(statusCode);
+  Serial.println("End of POST to TagoIO");
+  Serial.println();
+  delay(5000);
+
   // Formatar e enviar dados de umidade
   strcpy(umidadeData, "{\n\t\"variable\": \"Umidade\",\n\t\"value\": ");
   dtostrf(umidade, 6, 2, anyData);
@@ -64,8 +86,7 @@ void loop() {
   client.addHeader("Content-Type", contentHeader);
   client.addHeader("Device-Token", tokenHeader);
   statusCode = client.POST(umidadeData);
-  delay(2000);
-  Serial.print("Status code (Umidade): ");
+   Serial.print("Status code (Umidade): ");
   Serial.println(statusCode);
   Serial.println("End of POST to TagoIO");
 
@@ -74,6 +95,9 @@ void loop() {
 
   // Incrementar o valor da umidade (simulação)
   umidade += 5;
+
+  // Incrementar o valor da chuva (simulação)
+  Temperatura += 10;
 
   // Delay para enviar os dados periodicamente
   delay(5000);
