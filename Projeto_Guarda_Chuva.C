@@ -1,6 +1,7 @@
 #include "Arduino.h"
 #include "WiFi.h"
 #include "HTTPClient.h"
+#include "DHT.h"
 
 char ssid[] = "Galaxy Felipe";
 char pass[] = "Felipe100603";
@@ -11,10 +12,18 @@ HTTPClient client; // Iniciar uma nova instância do cliente HTTP
 
 const char deviceID[] = "01"; //ID do dispositivo
 
+#define DHTPIN 4// Pino onde o sensor DHT11 está conectado
+#define DHTTYPE DHT11 // Tipo do sensor DHT (DHT11 no seu caso)
+#define REED_SWITCH_PIN  14// Pino onde o reed switch está conectado
+
+DHT dht(DHTPIN, DHTTYPE);
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   init_wifi();
+  dht.begin(); // Inicializar o sensor DHT11
+  pinMode(REED_SWITCH_PIN, INPUT_PULLUP); // Configurar o reed switch como entrada com resistor pull-up
 }
 void init_wifi() {
   Serial.println("Conectando WiFi");
@@ -28,9 +37,9 @@ void init_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-float Chuva = 0; // Variável de chuva
-float umidade = 0; // Variável de umidade
-float temperatura = 0; // Variável de umidade
+float Chuva = digitalRead(REED_SWITCH_PIN); // Variável de chuva
+float umidade = dht.readHumidity(); // Variável de umidade
+float temperatura = dht.readTemperature(); // Variável de temperatura
 
 void loop() {
   char anyData[30];
@@ -89,15 +98,6 @@ void loop() {
    Serial.print("Status code (Umidade): ");
   Serial.println(statusCode);
   Serial.println("End of POST to TagoIO");
-
-  // Incrementar o valor da chuva (simulação)
-  Chuva += 10;
-
-  // Incrementar o valor da umidade (simulação)
-  umidade += 5;
-
-  // Incrementar o valor da chuva (simulação)
-  Temperatura += 10;
 
   // Delay para enviar os dados periodicamente
   delay(5000);
