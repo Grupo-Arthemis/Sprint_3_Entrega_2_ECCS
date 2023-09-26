@@ -12,9 +12,9 @@ HTTPClient client; // Iniciar uma nova instância do cliente HTTP
 
 const char deviceID[] = "01"; //ID do dispositivo
 
-#define DHTPIN 4// Pino onde o sensor DHT11 está conectado
+#define DHTPIN 4 // Pino onde o sensor DHT11 está conectado
 #define DHTTYPE DHT11 // Tipo do sensor DHT (DHT11 no seu caso)
-#define REED_SWITCH_PIN  14// Pino onde o reed switch está conectado
+#define REED_SWITCH_PIN 14 // Pino onde o reed switch está conectado
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -22,6 +22,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   init_wifi();
+  pinMode(DHTPIN, INPUT);
   dht.begin(); // Inicializar o sensor DHT11
   pinMode(REED_SWITCH_PIN, INPUT_PULLUP); // Configurar o reed switch como entrada com resistor pull-up
 }
@@ -37,10 +38,6 @@ void init_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-float Chuva = digitalRead(REED_SWITCH_PIN); // Variável de chuva
-float umidade = dht.readHumidity(); // Variável de umidade
-float temperatura = dht.readTemperature(); // Variável de temperatura
-
 void loop() {
   char anyData[30];
   char anyData1[30];
@@ -48,6 +45,10 @@ void loop() {
   char umidadeData[300];
   char tempData[300];
   int statusCode = 0;
+
+  float Chuva = digitalRead(REED_SWITCH_PIN); // Variável de chuva
+  float umidade = dht.readHumidity(); // Variável de umidade
+  float temperatura = dht.readTemperature(); // Variável de temperatura
 
   // Formatar e enviar dados de chuva
   strcpy(chuvaData, "{\n\t\"variable\": \"Chuva\",\n\t\"value\": ");
